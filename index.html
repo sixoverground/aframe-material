@@ -4,19 +4,22 @@
     <meta charset="utf-8">
     <title>aframe-material😲😆😛</title>
     <meta name="description" content="Aframe-Material">
-    <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
     <script src="https://rawgit.com/mayognaise/aframe-mouse-cursor-component/master/dist/aframe-mouse-cursor-component.min.js"></script>
-    <script src="https://cdn.rawgit.com/zcanter/aframe-gradient-sky/master/dist/gradientsky.min.js"></script>
     <script src="dist/aframe-material.js"></script>
     <script type="text/javascript">
       AFRAME.ASSETS_PATH = "./assets";
     </script>
   </head>
   <body>
-    <a-scene>
+    <a-scene background="color: #ff0000">
       <a-entity laser-controls="hand: right"></a-entity>
 
-      <a-entity> <a-camera look-controls-enabled wasd-controls-enabled mouse-cursor></a-camera></a-entity>
+      <a-entity>
+        <a-camera look-controls-enabled wasd-controls-enabled mouse-cursor>
+            <a-cursor material="color: #000; shader: flat" raycaster="objects: .clickable, a-rounded" />
+        </a-camera>
+      </a-entity>
 
       <!-- BEGIN INPUTS/KEYBOARD -->
       <a-keyboard physical-keyboard="true"></a-keyboard>
@@ -43,9 +46,6 @@
       <a-toast message="This is a toast" action="Got it"></a-toast>
       <!-- END TOAST -->
 
-      <!-- BEGIN ENVIRONEMENT -->
-      <a-gradient-sky material="shader: gradient; topColor: 255 0 0; bottomColor: 0 121 255;"></a-gradient-sky>
-      <!-- END ENVIRONEMENT -->
     </a-scene>
     <script type="text/javascript">
       let button = document.querySelector('a-button');

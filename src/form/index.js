@@ -1,7 +1,6 @@
-const Utils = require('../utils');
-const Event = require('../core/event');
+const AFRAME = window.AFRAME;
 
-AFRAME.registerComponent('form', {
+AFRAME.registerComponent("form", {
   schema: {
   },
   init: function () {
@@ -14,7 +13,7 @@ AFRAME.registerComponent('form', {
   play: function () {}
 });
 
-AFRAME.registerPrimitive('a-form', {
+AFRAME.registerPrimitive("a-form", {
   defaultComponents: {
     form: {}
   },

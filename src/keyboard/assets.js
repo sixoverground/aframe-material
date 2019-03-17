@@ -1,3 +1,5 @@
+const AFRAME = window.AFRAME;
+
 module.exports = {
   aframeKeyboardShift: `${AFRAME.ASSETS_PATH}/images/ShiftIcon.png`,
   aframeKeyboardShiftActive: `${AFRAME.ASSETS_PATH}/images/ShiftActiveIcon.png`,
@@ -8,4 +10,4 @@ module.exports = {
   aframeKeyboardShadow: `${AFRAME.ASSETS_PATH}/images/KeyShadow.png`,
   aframeKeyboardKeyIn: `${AFRAME.ASSETS_PATH}/sounds/KeyIn.mp3`,
   aframeKeyboardKeyDown: `${AFRAME.ASSETS_PATH}/sounds/KeyDown.mp3`
-}
+};
