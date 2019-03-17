@@ -56,9 +56,10 @@ Behaviors.openKeyboard = function (el) {
   let parent = el.parentNode;
   if (!parent) { el.sceneEl.appendChild(el); }
   for (let item of el.querySelectorAll("[data-ui]")) {
-    for (let child of item.children) {
-      child.setAttribute("hide", true);
-    }
+    // for (let child of item.children) {
+    //   // this causes a stack overflow
+    //   // child.setAttribute("hide", true);
+    // }
     const animationend = () => {
       item.children[0].removeEventListener("animationend", animationend);
       setTimeout(function () {
@@ -75,9 +76,10 @@ Behaviors.openKeyboard = function (el) {
 Behaviors.dismissKeyboard = function (el) {
   el._transitioning = true;
   for (let item of el.querySelectorAll("[data-ui]")) {
-    for (let child of item.children) {
-      child.setAttribute("show", true);
-    }
+    // for (let child of item.children) {
+    //   // this causes a stack overflow
+    //   // child.setAttribute("show", true);
+    // }
     el.isOpen = false;
     const animationend = () => {
       item.children[1].removeEventListener("animationend", animationend);

@@ -2,7 +2,7 @@
   "name": "aframe-material",
   "main": "dist/aframe-material.min.js",
   "description": "Material design (inputs, keyboards, checkbox, radio button) for A-Frame (https://aframe.io).",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "license": "MIT",
   "scripts": {
     "watch": "cross-env webpack --progress --colors --watch",

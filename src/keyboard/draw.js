@@ -202,9 +202,9 @@ Draw.actionsLayout = () => {
     let key = Draw.key(keyId, data[i].type, data[i].value);
 
     key.setAttribute("position", `0 -${valY} 0`);
-    if (i === 0) {
+    if (parseInt(i) === 0) {
       valY += Config.ACTION_WIDTH + 0.01;
-    } else if (i === 1) {
+    } else if (parseInt(i) === 1) {
       valY += Config.KEY_WIDTH + 0.01;
     }
     wrapper.appendChild(key);
@@ -287,19 +287,17 @@ Draw.key = (id, type, value) => {
     el.shadow_el.setAttribute("position", Config.ACTION_WIDTH / 2 + " " + Config.KEY_WIDTH / 2 + " -0.02");
   }
 
-  let iconEl;
-
   // ---------------------------------------------------------------------------
   // SHIFT KEY
 
   if (type === "shift") {
-    iconEl = document.createElement("a-image");
-    iconEl.setAttribute("data-type", "icon");
-    iconEl.setAttribute("width", "0.032");
-    iconEl.setAttribute("height", "0.032");
-    iconEl.setAttribute("position", "0.04 0.04 0.01");
-    iconEl.setAttribute("src", Assets.aframeKeyboardShift);
-    el.appendChild(iconEl);
+    const shiftEl = document.createElement("a-image");
+    shiftEl.setAttribute("data-type", "icon");
+    shiftEl.setAttribute("width", "0.032");
+    shiftEl.setAttribute("height", "0.032");
+    shiftEl.setAttribute("position", "0.04 0.04 0.01");
+    shiftEl.setAttribute("src", Assets.aframeKeyboardShift);
+    el.appendChild(shiftEl);
     Draw.el.shiftKey = el;
   }
 
@@ -307,24 +305,24 @@ Draw.key = (id, type, value) => {
   // GLOBAL
 
   else if (type === "global") {
-    iconEl = document.createElement("a-image");
-    iconEl.setAttribute("width", "0.032");
-    iconEl.setAttribute("height", "0.032");
-    iconEl.setAttribute("position", "0.04 0.04 0.01");
-    iconEl.setAttribute("src", Assets.aframeKeyboardGlobal);
-    el.appendChild(iconEl);
+    const globalEl = document.createElement("a-image");
+    globalEl.setAttribute("width", "0.032");
+    globalEl.setAttribute("height", "0.032");
+    globalEl.setAttribute("position", "0.04 0.04 0.01");
+    globalEl.setAttribute("src", Assets.aframeKeyboardGlobal);
+    el.appendChild(globalEl);
   }
 
   // ---------------------------------------------------------------------------
   // BACKSPACE
 
   else if (type === "backspace") {
-    iconEl = document.createElement("a-image");
-    iconEl.setAttribute("width", "0.046");
-    iconEl.setAttribute("height", "0.046");
-    iconEl.setAttribute("position", "0.07 0.04 0.01");
-    iconEl.setAttribute("src", Assets.aframeKeyboardBackspace);
-    el.appendChild(iconEl);
+    const backspaceEl = document.createElement("a-image");
+    backspaceEl.setAttribute("width", "0.046");
+    backspaceEl.setAttribute("height", "0.046");
+    backspaceEl.setAttribute("position", "0.07 0.04 0.01");
+    backspaceEl.setAttribute("src", Assets.aframeKeyboardBackspace);
+    el.appendChild(backspaceEl);
   }
 
   // ---------------------------------------------------------------------------
@@ -341,24 +339,24 @@ Draw.key = (id, type, value) => {
     circleEl.setAttribute("position", "0.07 0.07 0.01");
     el.appendChild(circleEl);
 
-    iconEl = document.createElement("a-image");
-    iconEl.setAttribute("width", "0.034");
-    iconEl.setAttribute("height", "0.034");
-    iconEl.setAttribute("position", "0.07 0.07 0.011");
-    iconEl.setAttribute("src", Assets.aframeKeyboardEnter);
-    el.appendChild(iconEl);
+    const enterEl = document.createElement("a-image");
+    enterEl.setAttribute("width", "0.034");
+    enterEl.setAttribute("height", "0.034");
+    enterEl.setAttribute("position", "0.07 0.07 0.011");
+    enterEl.setAttribute("src", Assets.aframeKeyboardEnter);
+    el.appendChild(enterEl);
   }
 
   // ---------------------------------------------------------------------------
   // DISMISS
 
   else if (type === "dismiss") {
-    iconEl = document.createElement("a-image");
-    iconEl.setAttribute("width", "0.046");
-    iconEl.setAttribute("height", "0.046");
-    iconEl.setAttribute("position", "0.07 0.04 0.01");
-    iconEl.setAttribute("src", Assets.aframeKeyboardDismiss);
-    el.appendChild(iconEl);
+    const dismissEl = document.createElement("a-image");
+    dismissEl.setAttribute("width", "0.046");
+    dismissEl.setAttribute("height", "0.046");
+    dismissEl.setAttribute("position", "0.07 0.04 0.01");
+    dismissEl.setAttribute("src", Assets.aframeKeyboardDismiss);
+    el.appendChild(dismissEl);
   }
 
   return el;
