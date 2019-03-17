@@ -1,6 +1,7 @@
 var path = require("path");
 var childProcess = require("child_process");
 var webpack = require("webpack");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
 // Add HMR for development environments only.
 var entry = ["./src/index.js"];
@@ -37,11 +38,6 @@ var plugins = [
     COMMIT_HASH: JSON.stringify(commitHash)
   })
 ];
-if (process.env.NODE_ENV === "production") {
-  plugins.push(new webpack.optimize.UglifyJsPlugin({
-    compress: {warnings: false}
-  }));
-}
 
 // dist/
 var filename = "aframe-material.js";
@@ -51,6 +47,10 @@ if (process.env.NODE_ENV === "production") {
 }
 
 module.exports = {
+  mode: process.env.NODE_ENV === "dev" ? "development" : "production",
+  optimization: {
+    minimizer: process.env.NODE_ENV === "dev" ? [] : [new UglifyJsPlugin()]
+  },
   devServer: {port: 3333},
   entry: entry,
   devtool: "sourcemap",
