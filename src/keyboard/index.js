@@ -28,10 +28,12 @@ AFRAME.registerComponent("keyboard", {
     // Create layout
     this.el.alphabeticalLayout = Draw.alphabeticalLayout();
     this.el.symbolsLayout = Draw.symbolsLayout();
+    this.el.symbolsLayout.setAttribute("position", "10000 10000 10000");
 
     // Append layouts to UI
     numericalUI.appendChild(Draw.numericalLayout());
     mainUI.appendChild(this.el.alphabeticalLayout);
+    mainUI.appendChild(this.el.symbolsLayout);
     actionsUI.appendChild(Draw.actionsLayout());
 
     this.el.appendChild(numericalUI);

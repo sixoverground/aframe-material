@@ -64,6 +64,9 @@ Behaviors.openKeyboard = function (el) {
       item.children[0].removeEventListener("animationend", animationend);
       setTimeout(function () {
         item.children[1].setAttribute("fadein", {duration: 160});
+        if (item.children.length > 2) {
+          item.children[2].setAttribute("fadein", {duration: 160});
+        }
         Event.emit(Behaviors.el, "didopen");
         el._transitioning = false;
       }, 10);
@@ -89,6 +92,9 @@ Behaviors.dismissKeyboard = function (el) {
           Behaviors.hideKeyboard(el);
           Event.emit(Behaviors.el, "diddismiss");
           el._transitioning = false;
+          if (Behaviors.isSymbols) {
+            Behaviors.symbolsToggle();
+          }
         }
         item.children[0].setAttribute("fadeout", {duration: 160});
         item.children[0].addEventListener("animationend", animationend);
@@ -96,6 +102,9 @@ Behaviors.dismissKeyboard = function (el) {
     };
     item.children[1].setAttribute("fadeout", {duration: 160});
     item.children[1].addEventListener("animationend", animationend);
+    if (item.children.length > 2) {
+      item.children[2].setAttribute("fadeout", {duration: 160});
+    }
   }
 };
 
@@ -220,16 +229,23 @@ Behaviors.isSymbols = false;
 Behaviors.symbolsToggle = function () {
   Behaviors.isSymbols = !Behaviors.isSymbols;
   if (!Behaviors.isSymbols) {
-    let parent = Behaviors.el.symbolsLayout.parentNode;
-    parent.removeChild(Behaviors.el.symbolsLayout);
-    parent.appendChild(Behaviors.el.alphabeticalLayout);
+    // let parent = Behaviors.el.symbolsLayout.parentNode;
+    // parent.removeChild(Behaviors.el.symbolsLayout);
+    Behaviors.el.symbolsLayout.setAttribute("position", "10000 10000 10000");
+    // parent.appendChild(Behaviors.el.alphabeticalLayout);
+    Behaviors.el.alphabeticalLayout.setAttribute("position", "0.02 0.26 0.001");
     setTimeout(function () {
       Utils.updateOpacity(Behaviors.el.alphabeticalLayout, 1);
     }, 0);
   } else {
-    let parent = Behaviors.el.alphabeticalLayout.parentNode;
-    parent.removeChild(Behaviors.el.alphabeticalLayout);
-    parent.appendChild(Behaviors.el.symbolsLayout);
+    // let parent = Behaviors.el.alphabeticalLayout.parentNode;
+    // parent.removeChild(Behaviors.el.alphabeticalLayout);
+    Behaviors.el.alphabeticalLayout.setAttribute("position", "10000 10000 10000");
+    // parent.appendChild(Behaviors.el.symbolsLayout);
+    Behaviors.el.symbolsLayout.setAttribute("position", "0.02 0.26 0.001");
+    setTimeout(function () {
+      Utils.updateOpacity(Behaviors.el.symbolsLayout, 1);
+    }, 0);
   }
 };
 
